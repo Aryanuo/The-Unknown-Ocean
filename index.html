@@ -1,0 +1,122 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>The Unknown Ocean</title>
+    <link rel="icon" href="data:,">
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+    <main id="app" class="app is-landing">
+      <canvas id="ocean" aria-label="Procedural ocean expedition view"></canvas>
+
+      <section id="landing" class="landing" aria-live="polite">
+        <div class="landing__line landing__line--first">95% of this ocean has never been explored.</div>
+        <button id="beginExpedition" class="landing__begin" type="button">Begin your expedition.</button>
+      </section>
+
+      <section id="hud" class="hud" aria-label="Expedition controls">
+        <div class="hud__top">
+          <div class="signal">
+            <span class="signal__label">Ocean explored</span>
+            <strong id="globalProgress">3.48%</strong>
+          </div>
+          <div id="eventPill" class="event-pill"></div>
+        </div>
+
+        <div class="readout" aria-label="Current coordinates">
+          <span>X <strong id="coordX">0</strong></span>
+          <span>Y <strong id="coordY">0</strong></span>
+          <span>Depth <strong id="coordDepth">0m</strong></span>
+          <span id="biomeName">Open Ocean</span>
+        </div>
+
+        <div class="toolbar" aria-label="Expedition actions">
+          <button id="scanButton" class="tool tool--primary" type="button" aria-label="Scan for discoveries" title="Scan">Scan</button>
+          <button id="diveButton" class="tool" type="button" aria-label="Dive deeper" title="Dive">Dive</button>
+          <button id="surfaceButton" class="tool" type="button" aria-label="Ascend" title="Ascend">Ascend</button>
+          <button id="logButton" class="tool" type="button" aria-label="Open research log" title="Research log">Log</button>
+          <button id="photoButton" class="tool" type="button" aria-label="Capture photograph" title="Photo">Photo</button>
+        </div>
+      </section>
+
+      <aside id="researchLog" class="panel panel--log" aria-label="Research log" aria-hidden="true">
+        <div class="panel__head">
+          <div>
+            <span class="eyebrow">Research Log</span>
+            <h1 id="researcherName">Researcher</h1>
+          </div>
+          <button id="closeLog" class="icon-button" type="button" aria-label="Close research log">Close</button>
+        </div>
+
+        <div class="stats">
+          <div>
+            <span>Species</span>
+            <strong id="speciesCount">0</strong>
+          </div>
+          <div>
+            <span>Regions</span>
+            <strong id="regionCount">0</strong>
+          </div>
+          <div>
+            <span>Distance</span>
+            <strong id="distanceCount">0km</strong>
+          </div>
+          <div>
+            <span>Max depth</span>
+            <strong id="maxDepthCount">0m</strong>
+          </div>
+        </div>
+
+        <div class="panel__section">
+          <h2>Discoveries</h2>
+          <div id="discoveryList" class="discovery-list"></div>
+        </div>
+      </aside>
+
+      <section id="discoveryModal" class="discovery-modal" aria-label="New discovery" aria-hidden="true">
+        <div class="discovery-card">
+          <div class="discovery-card__preview">
+            <canvas id="speciesPreview" width="420" height="300" aria-label="Discovered species preview"></canvas>
+          </div>
+          <div class="discovery-card__body">
+            <span class="eyebrow">New Discovery</span>
+            <h2 id="speciesTitle">Unknown Species</h2>
+            <dl class="species-facts">
+              <div>
+                <dt>ID</dt>
+                <dd id="speciesId">AQ-0000</dd>
+              </div>
+              <div>
+                <dt>Biome</dt>
+                <dd id="speciesBiome">Open Ocean</dd>
+              </div>
+              <div>
+                <dt>Depth</dt>
+                <dd id="speciesDepth">0m</dd>
+              </div>
+              <div>
+                <dt>Behavior</dt>
+                <dd id="speciesBehavior">Curious</dd>
+              </div>
+            </dl>
+            <label class="name-field">
+              <span>Name this species</span>
+              <input id="speciesNameInput" type="text" maxlength="34" autocomplete="off" placeholder="Azure Ghostfin">
+            </label>
+            <div class="discovery-card__actions">
+              <button id="saveSpeciesName" class="tool tool--primary" type="button">Record</button>
+              <button id="skipSpeciesName" class="tool" type="button">Later</button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <div id="toast" class="toast" role="status" aria-live="polite"></div>
+      <div id="shutter" class="shutter" aria-hidden="true"></div>
+    </main>
+
+    <script src="app.js?v=3d-diver-10"></script>
+  </body>
+</html>
